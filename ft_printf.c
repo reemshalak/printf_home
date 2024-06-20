@@ -14,8 +14,6 @@
 #include <stdarg.h>
 #include <unistd.h>
 #include <stddef.h>
-
-
 size_t	ft_strlen(const char *s)
 {
 	size_t	i;
@@ -57,7 +55,10 @@ int	ft_putnbr_fd(int n, int fd)
 	else
 		ft_putchar_fd(n + '0', fd);
 }
-
+int ft_putnbr_base(long n,int base)
+{
+    
+}
 int check_format(char variadic, va_list list)
 {
     if(variadic == 'c')
@@ -70,10 +71,10 @@ int check_format(char variadic, va_list list)
     ft_putnbr_fd(va_arg(list, int), 1);
     // else if(variadic == 'i')
         
-    // else if(variadic == 'u')
-    
-    // else if(variadic == 'x')
-    
+    else if(variadic == 'u')
+    ft_putnbr_fd(va_arg(list, unsigned int), 1);
+     else if(variadic == 'x')
+     
     // else if(variadic == 'X')
 
     // else if(variadic == '%')
@@ -96,13 +97,13 @@ int ft_printf(const char *format, ...)
 }
 int main() {
   char *str = "Hello, world!"; // Test string
-    int num = 123; // Test integer
+    unsigned int num = 123; // Test integer
 
     printf("Testing printf:\n");
     printf("String: %s\n", str); // Standard printf
-    printf("Integer: %d\n", num); // Standard printf
+    printf("unsigned: %u\n", num); // Standard printf
 
     printf("\nTesting ft_printf:\n");
     ft_printf("String: %s\n", str); // Custom ft_printf implementation
-    ft_printf("Integer: %d\n", num); 
+    ft_printf("unsigned: %u\n", num); 
 }
